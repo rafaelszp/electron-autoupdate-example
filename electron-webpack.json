@@ -1,0 +1,9 @@
+{
+    "staticSourceDirectory": "static",
+    "main": {
+        "sourceDirectory": "src/main"
+    },
+    "renderer": {
+        "sourceDirectory": "src/renderer"
+    }
+}
