@@ -3,8 +3,9 @@ const isDev = require('electron-is-dev');
 const fs = require('fs')
 const path = require('path')
 
-const staticPath = isDev ? __dirname.replace(/src[\\||\/]main/g,'static'): __dirname.replace(/app\.asar/g,'static');
-const pluginsFolder = path.join(staticPath,path.sep,'plugins')
+// const staticPath = isDev ? __dirname.replace(/src[\\||\/]main/g,'static'): __dirname.replace(/app\.asar/g,'static');
+// const pluginsFolder = path.join(staticPath,path.sep,'plugins')
+const pluginsFolder = path.join(__static,path.sep,'plugins')
 const pluginPath = path.join(pluginsFolder,path.sep,'plugin.txt');
 console.log('loading from ',pluginPath);
 
@@ -22,14 +23,14 @@ app.whenReady().then(() => {
         console.log('production')
     }
 
-    console.log(process.env)
+    console.log(process.env);
     mainWindow = new BrowserWindow({
         show: true
     });
     mainWindow.loadURL(pluginContent);
+    mainWindow.maximize();
     mainWindow.on('close',()=>{
         mainWindow.destroy();
         app.quit();
     })
-
 });
