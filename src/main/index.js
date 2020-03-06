@@ -13,8 +13,9 @@ const pluginContent = fs.readFileSync(pluginPath, 'utf8');
 console.log(pluginContent);
 
 let mainWindow;
-app.whenReady().then(() => {
 
+//Instructions: https://gist.github.com/iffy/0ff845e8e3f59dbe7eaf2bf24443f104
+const checkForUpdates = () =>{
     if (!isDev) {
         const { autoUpdater } = require("electron-updater")
         autoUpdater.logger = require("electron-log")
@@ -32,8 +33,13 @@ app.whenReady().then(() => {
         autoUpdater.checkForUpdates();
 
     } else {
-        console.log('production')
+        console.log('development')
     }
+}
+
+app.whenReady().then(() => {
+
+    checkForUpdates();
 
     console.log(process.env);
     mainWindow = new BrowserWindow({
