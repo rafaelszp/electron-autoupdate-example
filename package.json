@@ -1,6 +1,6 @@
 {
   "name": "autoupd-example",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "",
   "main": "src/main/index.js",
   "scripts": {
@@ -9,14 +9,16 @@
     "clean": "rm -rf dist",
     "compile": "yarn clean && electron-webpack",
     "dist:linux": "yarn compile && electron-builder --linux",
-    "dist": "yarn compile && electron-builder --win --linux",
-    "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null",
+    "dist": "yarn compile && electron-builder --win",
+    "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null --linux",
     "dist:dir32": "yarn dist:dir --ia32"
   },
   "author": "Rafael Pereira",
   "license": "ISC",
   "dependencies": {
     "electron-is-dev": "^1.1.0",
+    "electron-log": "^4.0.7",
+    "electron-updater": "^4.0.6",
     "source-map-support": "^0.5.12"
   },
   "devDependencies": {
@@ -29,10 +31,23 @@
     "appId": "autoupd-example",
     "compression": "store",
     "asar": true,
-    "asarUnpack" :["./static"],
-    "win":{
-      "target": "nsis",
+    "asarUnpack": [
+      "./static"
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ],
       "icon": "static/img/tux.ico"
-    }
+    },
+    "nsis": {
+      "perMachine": true
+    },
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "http://127.0.0.1:8080/"
+      }
+    ]
   }
 }
