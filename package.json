@@ -7,8 +7,9 @@
     "start": "ELECTRON_IS_DEV=1 electron .",
     "dev": "ELECTRON_IS_DEV=1 electron-webpack dev",
     "compile": "electron-webpack",
-    "dist": "yarn compile && electron-builder --linux --win",
-    "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null --linux --win --ia32"
+    "dist:linux": "yarn compile && electron-builder --linux",
+    "dist": "yarn compile && electron-builder --win --ia32",
+    "dist:dir": "yarn dist --dir -c.compression=store -c.mac.identity=null --win --ia32"
   },
   "author": "",
   "license": "ISC",
@@ -26,6 +27,11 @@
     "appId": "autoupd-example",
     "compression": "store",
     "asar": true,
-    "asarUnpack" :["./static"]
+    "asarUnpack" :["./static"],
+    "win":{
+      "target": "msi",
+      "icon": "static/img/tux.ico",
+      "publisherName": "Rafael Pereira"
+    }
   }
 }
