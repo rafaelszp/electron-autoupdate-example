@@ -49,6 +49,12 @@ app.whenReady().then(() => {
     if (isDev) {
         mainWindow.webContents.openDevTools();
         mainWindow.loadURL(`http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}`)
+    } else {
+        mainWindow.loadURL(formatUrl({
+            pathname: path.join(__dirname, 'index.html'),
+            protocol: 'file',
+            slashes: true
+        }))
     }
     mainWindow.maximize();
     mainWindow.on('close', () => {

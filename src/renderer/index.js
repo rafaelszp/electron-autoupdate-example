@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import Home from './components/home/Home'
+import Home from './components/Home'
 
 if (module.hot) {
     module.hot.accept();
