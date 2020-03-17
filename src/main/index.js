@@ -1,7 +1,9 @@
-const { app, BrowserWindow, autoUpdater } = require('electron');
-const isDev = require('electron-is-dev');
-const fs = require('fs')
-const path = require('path')
+import { format as formatUrl } from 'url'
+import { app, BrowserWindow, autoUpdater, ipcMain } from 'electron'
+import fs from 'fs';
+import isDev from 'electron-is-dev';
+import path from 'path';
+
 
 // const staticPath = isDev ? __dirname.replace(/src[\\||\/]main/g,'static'): __dirname.replace(/app\.asar/g,'static');
 // const pluginsFolder = path.join(staticPath,path.sep,'plugins')
@@ -43,7 +45,11 @@ app.whenReady().then(() => {
 
     console.log(process.env);
     mainWindow = new BrowserWindow({
-        show: true
+        show: true,
+        webPreferences: {
+            nodeIntegration: true,
+            preload: path.resolve(__dirname, 'main_preload.js')
+        }
     });
     // mainWindow.loadURL(pluginContent);
     if (isDev) {
@@ -60,7 +66,22 @@ app.whenReady().then(() => {
     mainWindow.on('close', () => {
         mainWindow.destroy();
         app.quit();
-    })
+    });
+
+    mainWindow.webContents.on('devtools-opened', () => {
+        mainWindow.focus()
+        setImmediate(() => {
+            mainWindow.focus()
+        })
+    });
+
+    mainWindow.on('closed', () => {
+        mainWindow = null
+    });
+
+    ipcMain.on('goto-plugin-page',(event,data)=>{
+        mainWindow.loadURL(pluginContent);
+    });
 });
 
 if (module.hot) {

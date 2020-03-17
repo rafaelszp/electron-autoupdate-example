@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 
 import DummyButton from '../DummyButton'
+import ButtonGotoPlugin from '../ButtonGotoPlugin';
 
 const Home = () => {
     return (
@@ -8,6 +9,9 @@ const Home = () => {
             <div>Home</div>
             <div>
                 <DummyButton/>
+            </div>
+            <div>
+                <ButtonGotoPlugin/>
             </div>
         </Fragment>
     )
