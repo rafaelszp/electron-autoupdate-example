@@ -16,6 +16,11 @@ console.log(pluginContent);
 
 let mainWindow;
 
+if(isDev){
+    app.commandLine.appendSwitch('remote-debugging-port', '9222')
+    app.commandLine.appendSwitch('userDataDir', true)
+}
+
 //Instructions: https://gist.github.com/iffy/0ff845e8e3f59dbe7eaf2bf24443f104
 const checkForUpdates = () => {
     if (!isDev) {
@@ -53,6 +58,7 @@ app.whenReady().then(() => {
     });
     // mainWindow.loadURL(pluginContent);
     if (isDev) {
+        
         mainWindow.webContents.openDevTools();
         mainWindow.loadURL(`http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}`)
     } else {

@@ -1,34 +1,56 @@
+//Reference: https://github.com/electron-userland/electron-webpack/issues/76#issuecomment-529134410
 {
     "version": "0.2.0",
+    // "compounds": [ 
+    //     {
+    //     "name": "Webpack Compound",
+    //     "configurations": [
+    //       "Electron Webpack: Dev",
+    //       "Electron Webpack: Dev Renderer",
+    //     ]
+    //   }
+    // ],
     "configurations": [
+        // Configuration from https://github.com/electron-userland/electron-webpack/issues/80.
         {
-            "type": "node",
-            "request": "launch",
-            "name": "Launch and Debug - after ready",
-            "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron-webpack",
-            "runtimeArgs": [
-                "dev"
-            ],
-            "autoAttachChildProcesses": true,
-            "internalConsoleOptions": "openOnFirstSessionStart",
-            "console": "integratedTerminal"
-        },
-        {
-            "name": "Debug Main Process",
+            "name": "01 - Main Process",
             "type": "node",
             "request": "launch",
             "cwd": "${workspaceFolder}",
-            "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
-            "windows": {
-                "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron.cmd"
-            },
+            "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron-webpack",
             "args": [
-                "."
+                "dev"
             ],
-            "outputCapture": "std",
             "env": {
+                // "DEBUG": "*",
+                "ELECTRON_DISABLE_SECURITY_WARNINGS": "1",
+                "NODE_ENV": "development",
                 "ELECTRON_IS_DEV": "1"
-            }
+            },
+            "autoAttachChildProcesses": true,
+            "runtimeArgs": [
+                "--remote-debugging-port=9222",
+                "--userDataDir=true",
+            ],
+            "trace": false,
+            "console": "internalConsole",
+            "outputCapture": "std",
+            "sourceMaps": true,
+            "smartStep": true,
+            "showAsyncStacks": true,
         },
-    ]
-}
+        {
+            "name": "02 - Renderer process",
+            "type": "chrome",
+            "request": "attach",
+            "port": 9222,
+            "webRoot": "${workspaceFolder}",
+            "timeout": 30000,
+            "sourceMaps": true,
+            "showAsyncStacks": true,
+            "address": "127.0.0.1",
+            "smartStep": true,
+            "trace": "verbose",
+            "internalConsoleOptions": "openOnSessionStart",
+        },
+    }
