@@ -15,7 +15,7 @@ console.log(pluginContent);
 let mainWindow;
 
 //Instructions: https://gist.github.com/iffy/0ff845e8e3f59dbe7eaf2bf24443f104
-const checkForUpdates = () =>{
+const checkForUpdates = () => {
     if (!isDev) {
         const { autoUpdater } = require("electron-updater")
         autoUpdater.logger = require("electron-log")
@@ -45,10 +45,18 @@ app.whenReady().then(() => {
     mainWindow = new BrowserWindow({
         show: true
     });
-    mainWindow.loadURL(pluginContent);
+    // mainWindow.loadURL(pluginContent);
+    if (isDev) {
+        mainWindow.webContents.openDevTools();
+        mainWindow.loadURL(`http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}`)
+    }
     mainWindow.maximize();
     mainWindow.on('close', () => {
         mainWindow.destroy();
         app.quit();
     })
 });
+
+if (module.hot) {
+    module.hot.accept();
+}
