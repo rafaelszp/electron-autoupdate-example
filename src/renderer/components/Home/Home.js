@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 
-import DummyButton from '../DummyButton'
-import ButtonGotoPlugin from '../ButtonGotoPlugin';
+import DummyButton from 'components/DummyButton'
+import ButtonGotoPlugin from 'components/ButtonGotoPlugin';
 
 const Home = () => {
     return (

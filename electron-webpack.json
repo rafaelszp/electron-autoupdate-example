@@ -2,9 +2,11 @@
     "staticSourceDirectory": "static",
     "main": {
         "sourceDirectory": "src/main",
-        "extraEntries": ["@/main_preload.js"]
+        "extraEntries": ["@/main_preload.js"],
+        "webpackConfig": "webpack.main.js"
     },
     "renderer": {
-        "sourceDirectory": "src/renderer"
+        "sourceDirectory": "src/renderer",
+        "webpackConfig": "webpack.renderer.js"
     }
 }
