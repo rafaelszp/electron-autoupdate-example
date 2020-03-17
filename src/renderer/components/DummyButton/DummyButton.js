@@ -4,6 +4,7 @@ const DummyButton = () =>{
 
     const onClick = (e) =>{
         console.log('A dummy click',e);
+        alert('A dummy alert');
     }
 
     return (
