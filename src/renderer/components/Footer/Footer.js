@@ -1,16 +1,16 @@
-import React,{Fragment} from 'react'
+import React, { Fragment } from 'react'
 
-import {getLocalIPs} from 'common/Util';
+import { getLocalIPs } from 'common/Util';
 
-const Footer = () =>{
+const Footer = () => {
 
-    const renderIPs = () =>{
-    const lips = getLocalIPs().map((ip)=>(<li>{ip}</li>))
+    const renderIPs = () => {
+        const lips = getLocalIPs().map((ip) => (<li key={ip}>{ip}</li>));
         return (
             <Fragment>
-                <p>Your IP address{lips.length>1?'es are':' is'}: </p>
+                <p>Your IP address{lips.length > 1 ? 'es are' : ' is'}: </p>
                 <ol>
-                    {lips}            
+                    {lips}
                 </ol>
             </Fragment>
         )
