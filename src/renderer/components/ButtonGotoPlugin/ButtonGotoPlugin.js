@@ -1,8 +1,7 @@
 import React,{Fragment} from 'react'
 
 import './ButtonGotoPlugin.scss';
-
-import icon from 'Static/img/tux.ico'
+import path from 'path'
 
 const ButtonGotoPlugin = () =>{
 
@@ -12,8 +11,10 @@ const ButtonGotoPlugin = () =>{
 
     return (
         <Fragment>
-            <button className='btn-goto-plugin' onClick={(e)=>onClick(e)}>Go to page configured in plugin.txt</button>
-            <img src={icon}/>
+            <div className='btn-goto-plugin' onClick={(e)=>onClick(e)}>
+                <div className="spacer"/>
+    <a href="#" onClick={(e)=>onClick(e)}>Go to page configured in<br/>{__static+path.sep+'plugins'+path.sep}plugin.txt</a>
+            </div>
         </Fragment>
     )
 }

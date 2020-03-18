@@ -7,5 +7,17 @@ module.exports = {
             Renderer: path.resolve(__dirname, 'src/renderer/'),
             Static:  path.resolve(__dirname, 'static/'),
         }
-    }
+    },
+    module: {
+        rules: [
+          {
+            test: /\.(png|jpe?g|gif|ico)$/i,
+            use: [
+              {
+                loader: 'file-loader',
+              },
+            ],
+          },
+        ],
+      },
 }
