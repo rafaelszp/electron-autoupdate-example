@@ -1,4 +1,5 @@
 const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const config = {
   resolve: {
@@ -20,13 +21,16 @@ const config = {
       },
     ],
   },
+  plugins: [
+    new CleanWebpackPlugin()
+  ],
 };
 
-console.log('ELECTRON_WEBPACK_APP_SOURCEMAP',process.env.ELECTRON_WEBPACK_APP_SOURCEMAP)
+console.log('ELECTRON_WEBPACK_APP_SOURCEMAP', process.env.ELECTRON_WEBPACK_APP_SOURCEMAP)
 
-if(process.env.ELECTRON_WEBPACK_APP_SOURCEMAP===true){
+if (process.env.ELECTRON_WEBPACK_APP_SOURCEMAP === true) {
   config.devtool = 'source-map';
-}else{
+} else {
   config.devtool = 'nosources-source-map';
 }
 module.exports = config;
