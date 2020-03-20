@@ -15,5 +15,5 @@ export default asyncComponent({
         });
         return await wait;
     },
-    LoadingComponent: () => (<Spinner timeout={randomLoadTime}/>)
+    LoadingComponent: () => (<Spinner/>)
 });

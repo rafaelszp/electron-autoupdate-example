@@ -1,16 +1,27 @@
 import React, {Fragment} from 'react'
-import Loader from 'react-loader-spinner'
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 
-const Spinner = (timeout,width,height) =>{
+import { css } from "@emotion/core";
+import PacmanLoader from "react-spinners/PacmanLoader";
+
+let override = css(`
+    margin: 5px 0;
+    display: block;
+    border-color: gold;
+`);
+
+const Spinner = (width,height) =>{
+
+
+    console.log(typeof css)
     return (
         <Fragment>
-            <Loader
-                type="Bars"
-                color="#00BFFF"
-                height={height|12}
+            <PacmanLoader
+                css={override}
                 width={width|12}
-                timeout={timeout|3000}
+                height={height|12}
+                size={width|12}
+                color={`gold`}
+                loading={true}
             />
         </Fragment>
     );
