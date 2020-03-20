@@ -10,9 +10,6 @@ let override = css(`
 `);
 
 const Spinner = (width,height) =>{
-
-
-    console.log(typeof css)
     return (
         <Fragment>
             <PacmanLoader

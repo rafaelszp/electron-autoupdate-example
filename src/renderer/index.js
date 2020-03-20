@@ -10,5 +10,5 @@ if (module.hot) {
 ReactDOM.render(<Home />, document.getElementById('app'));
 
 (()=>{
-    // console.clear();
+    console.clear();
 })()
