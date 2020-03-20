@@ -1,7 +1,8 @@
-import React, { Fragment } from 'react'
+import React, {Fragment} from 'react'
 
 import DummyButton from 'components/DummyButton'
 import ButtonGotoPlugin from 'components/ButtonGotoPlugin';
+import AsyncButton from "components/AsyncButton";
 import Footer from 'components/Footer';
 
 const Home = () => {
@@ -15,10 +16,13 @@ const Home = () => {
                 <div>
                     <ButtonGotoPlugin/>
                 </div>
+                <div>
+                    <AsyncButton/>
+                </div>
             </main>
             <Footer/>
         </Fragment>
     )
-}
+};
 
 export default Home;

@@ -1,0 +1,21 @@
+.async-button {
+  display: block;
+  width: 10.1em;
+  background-color: darkgreen;
+  padding: 1em;
+  cursor: pointer;
+  text-decoration: none;
+  margin: .2em 0;
+  border-radius: .5em;
+  color: white;
+  box-shadow: inset 0 2px 0 0 darkcyan;
+
+  &:hover {
+    opacity: 0.85;
+    -webkit-transition: opacity .05s ease-in-out;
+  }
+
+  &:active{
+    text-decoration: underline;
+  }
+}
