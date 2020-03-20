@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react'
+import React, {Fragment} from 'react'
 
-import { getLocalIPs } from 'common/Util';
+import {getLocalIPs} from 'common/Util';
 
 const Footer = () => {
 

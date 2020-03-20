@@ -1,5 +1,5 @@
-import { format as formatUrl } from 'url'
-import { app, BrowserWindow, autoUpdater, ipcMain } from 'electron'
+import {format as formatUrl} from 'url'
+import {app, BrowserWindow, ipcMain} from 'electron'
 import fs from 'fs';
 import isDev from 'electron-is-dev';
 import path from 'path';
@@ -58,7 +58,7 @@ app.whenReady().then(() => {
     });
     // mainWindow.loadURL(pluginContent);
     if (isDev) {
-        
+
         mainWindow.webContents.openDevTools();
         mainWindow.loadURL(`http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}`)
     } else {
