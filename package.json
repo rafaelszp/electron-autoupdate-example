@@ -4,8 +4,8 @@
   "description": "",
   "main": "src/main/index.js",
   "scripts": {
-    "start": "ELECTRON_IS_DEV=1 electron .",
-    "dev": "ELECTRON_IS_DEV=1 electron-webpack dev",
+    "start": "electron .",
+    "dev": "electron-webpack dev",
     "clean": "rm -rf dist",
     "rm-sourcemap": "rm -f dist/renderer/*.map dist/main/*.map",
     "compile": "yarn clean && electron-webpack && yarn rm-sourcemap",
