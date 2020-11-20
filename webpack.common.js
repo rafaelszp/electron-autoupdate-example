@@ -1,5 +1,6 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const DefinePlugin = require('webpack').DefinePlugin;
 
 const config = {
   resolve: {
@@ -22,7 +23,10 @@ const config = {
     ],
   },
   plugins: [
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+    new DefinePlugin({
+      'STATIC_FOLDER': path.resolve(__dirname, 'static/'),
+    })
   ],
 };
 

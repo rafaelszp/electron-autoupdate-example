@@ -1,15 +1,15 @@
 //Reference: https://github.com/electron-userland/electron-webpack/issues/76#issuecomment-529134410
 {
     "version": "0.2.0",
-    // "compounds": [ 
-    //     {
-    //     "name": "Webpack Compound",
-    //     "configurations": [
-    //       "Electron Webpack: Dev",
-    //       "Electron Webpack: Dev Renderer",
-    //     ]
-    //   }
-    // ],
+    "compounds": [ 
+        {
+        "name": "Run all",
+        "configurations": [
+          "01 - Main Process",
+          "02 - Renderer process",
+        ]
+      }
+    ],
     "configurations": [
         // Configuration from https://github.com/electron-userland/electron-webpack/issues/80.
         {

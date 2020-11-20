@@ -88,6 +88,13 @@ app.whenReady().then(() => {
     ipcMain.on('goto-plugin-page',(event,data)=>{
         mainWindow.loadURL(pluginContent);
     });
+
+    ipcMain.on('goto-viewer',(event,data)=>{
+        const newLocal = 'file://'+path.resolve(__dirname,`${STATIC_FOLDER}`,'js/pdfjs/web/viewer.html');
+        mainWindow.loadURL(newLocal);
+        console.log('=>',newLocal)
+    });
+    
 });
 
 if (module.hot) {

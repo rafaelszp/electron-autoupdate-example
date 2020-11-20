@@ -5,7 +5,15 @@ import ButtonGotoPlugin from 'components/ButtonGotoPlugin';
 import AsyncButton from "components/AsyncButton";
 import Footer from 'components/Footer';
 
+
 const Home = () => {
+    
+
+    const path = require('path')
+    const staticFolder = path.resolve(__dirname, 'static/');
+
+    
+
     return (
         <Fragment>
             <main>
@@ -19,6 +27,9 @@ const Home = () => {
                 <div>
                     <AsyncButton/>
                 </div>
+                <>
+                    <button onClick={()=>window.ipcRenderer.send('goto-viewer',null)}>Viewer</button>
+                </>
             </main>
             <Footer/>
         </Fragment>
